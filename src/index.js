@@ -32,6 +32,7 @@ import Pic13 from '../src/images/Z63_3168_work-1-websize.jpg'
 import Pic14 from '../src/images/Z63_3231_work-websize.jpg'
 import Pic15 from '../src/images/Z63_3262_work-1-websize.jpg'
 import Pic16 from '../src/images/Z63_3365_work-1-websize.jpg'
+
 const App = () => {
   const itemData = [
        {
@@ -178,36 +179,53 @@ const App = () => {
         </Scene>
       </Controller>
       
-      <div className="marrigeText"> 결혼합니다 </div>      
 
+
+      <div style={{backgroundColor:'rgba(254, 251, 245, 0.8)', padding:'30px'}}>
+     
+     
+      <div className="marrigeText"> 초대합니다 </div>      
+       
+      <div style={{marginBottom:'0px'}} className="alignCenter locationDiv">
+       
+          <div>2022년 03월 01일 오후 5시 30분</div>
+          <div>더채플앳논현 라포레홀 6F</div>  
+      </div>
+
+      </div>
       <hr className="alignCenter"></hr>
 
       <div className="mainTextContainer alignCenter">
+      <div className="marrigeText">
+            인사말
+        </div>
             {/* <div className="maintextTtiel">7년간의 </div> */}
             <div className="mainText">두 사람이 7년의 아름다운 만남 가운데</div>
             <div className="mainText">하나님 안에서 행복한 가정을 이루고자 합니다.</div>
             <div className="mainText">서로를 귀히 여기고 사랑하며 살겠습니다.</div>
             <div className="mainText">시작하는 자리에 오셔서 축복해주시면</div>
             <div className="mainText">더없는 기쁨으로 간직하겠습니다.</div>
-            <div className="mainText">"믿음, 소망, 사랑 이 세가지는 항상 있을 것인데,</div>
-            <div className="mainText">그 중의 제일은 사랑이라" </div>
-            <div className="mainText">(고린도전서 13:13)</div>
+           <br></br>
+        
+            <div className="mainText smallMainText">"믿음, 소망, 사랑 이 세가지는 항상 있을 것인데,</div>
+            <div className="mainText smallMainText">그 중의 제일은 사랑이라" </div>
+            <div className="mainText smallRMainText">(고린도전서 13:13)</div>
       </div>
 
-      <hr className="alignCenter"></hr>
+      {/* <hr className="alignCenter"></hr> */}
 
       <div className="alignCenter locationDiv">
-          <div>2022년 03월 01일 오후 5시 30분</div>
+          {/* <div>2022년 03월 01일 오후 5시 30분</div>
           <div>더채플앳논현 라포레홀 6F</div>  
 
-          <br></br>
+          <br></br> */}
 
           <div>
-          <span className="parents">양재명 | 이지연</span>  <span className="parentsAmong">의 장남</span>  <span className="parents">양찬석</span>
+          <span className="parents">양재명 · 이지연</span>  <span className="parentsAmong">의 장남</span>  <span className="parentsChild">찬석</span>
           </div>
           <div>
           
-          <span className="parents">이종진 | 엄상민</span>  <span className="parentsAmong">의 장녀</span>  <span className="parents">이재희</span>
+          <span className="parents">이종진 · 엄상민</span>  <span className="parentsAmong">의 장녀</span>  <span className="parentsChild">재희</span>
           </div>
       
       </div>      
@@ -215,31 +233,42 @@ const App = () => {
       <hr className="alignCenter"></hr>
 
       <div className="alignCenter">
-        <div className="maptitle">
+        {/* <div className="maptitle"> */}
+        <div className="marrigeText">
           오시는 길
         </div>
         <MapsDiv/>
 
         <div className="alignCenter locaDiv" >
           <div>
+          <div><span style={{fontSize:'17px', fontWeight:'600'}}>더채플앳논현</span> <span style={{fontWeight:'500'}}>TEL 02.562.1121</span></div>
           <div>서울특별시 강남구 논현로 549</div>
           </div>
           <br></br>
           <div>
-          <span>지하철 | 언주역 (9호선) 7번 출구로 나와 도보 150m</span> 
+          <div style={{fontWeight:'600'}}>지하철</div>
+          <div style={{fontSize:'14px'}}>언주역 (9호선) 7번 출구로 나와 정면 방향으로 150m </div> 
+          <div style={{fontSize:'14px'}}>역삼역 (2호선) 6번 출구로 나와 좌측 방향으로 450m </div> 
 
           <br></br> 
-          <span>주차  &nbsp;&nbsp;   |  발렛 서비스(2시간 30분 무료)</span> 
+          <div style={{fontWeight:'600'}}>자가용</div>
+          <div  style={{fontSize:'14px'}}>내비게이션 이용 시 '더채플앳논현' 검색  </div>
+          <div  style={{fontSize:'14px'}}>발렛 서비스(2시간 30분 무료)</div> 
           </div>
         </div>
       </div>
 
+      <hr className="alignCenter"></hr>
    
       
       
       <div >
             {/* <CarouselPage /> */}
           <div className={classes.root}>
+
+          <div className="marrigeText">
+          Wedding Photo
+        </div>
           <ImageList rowHeight={160} className={classes.imageList} cols={3}>
             {itemData.map((item) => (
               <ImageListItem key={item.img} cols={item.cols || 1}>
@@ -250,35 +279,32 @@ const App = () => {
           </div>
       </div>
 
+      <hr style={{marginTop:'30px'}} className="alignCenter"></hr>
       
 
-      <div style={{width:"90%", margin:"0 auto"}}>
-        <div className="sendMind">신랑 & 신부에게 마음 전하기</div> 
-            <div>
-              <div className="sendMindName">신랑혼주 계좌 </div>
+      <div style={{width:"90%", margin:"0 auto", textAlign:'center', lineHeight:'1.6'}}>
+        <div className="marrigeText">마음 전하실 곳</div> 
+            <div >
+              <div className="sendMindName">신랑 측 </div>
               <div className="sendMindNum">신한은행 (예금주 : 양재명)</div>
-              <div className="sendMindNum">110-401-086718</div>
+              <span className="sendMindNum">110-401-086718</span>
+              <Button variant="outlined">복사하기</Button>
+               
+              {/* <Button variant="outlined">복사하기</Button> */}
             </div>
             <br></br>
+         
+
             <div>
-              <div className="sendMindName">신랑 계좌</div>
-              <div className="sendMindNum">국민은행 (예금주 : 양찬석) </div>
-              <div className="sendMindNum">368102-01-199845</div>
+            <div className="sendMindName">신부 측</div>
+            <div className="sendMindNum">하나은행 (예금주 : 이종진) </div>
+            <span className="sendMindNum">413-890062-86907</span>
+            <Button variant="outlined">복사하기</Button>
+
             </div>
             <br></br>
 
-            <div>
-            <div className="sendMindName">신부혼주 계좌</div>
-            <div className="sendMindNum">하나은행 (예금주 : : 이종진) </div>
-            <div className="sendMindNum">413-890062-86907</div>
-            </div>
-            <br></br>
 
-            <div style={{marginBottom: '30px'}}>
-              <div className="sendMindName">신부  계좌</div>
-              <div className="sendMindNum"> 우리은행(예금주 : 이재희) </div>
-              <div className="sendMindNum">100-285-2308092</div>
-            </div>
 
 
       </div>
@@ -288,8 +314,11 @@ const App = () => {
 
       <div style={{width:"90%", margin:"30px auto"}}>
 
+      <div className="marrigeText">
+          축하메세지 남기기
+        </div>
         <div>
-        <span style={{verticalAlign:'center'}} className="writerMsg">작성자</span>
+        <span style={{verticalAlign:'center'}} className="writerMsg">작성자 : </span>
         <input className="inputBox"  type='text'  onChange={(e) => setWriter(e.target.value)}></input >
         </div>
         <hr style={{width:'100%',margin:'15px 0px 30px'}}></hr>
@@ -298,18 +327,18 @@ const App = () => {
         <textarea className="inputBox msgInputbox"  placeholder="메세지를 입력해주세요"  type='text' onChange={(e) => setMessage(e.target.value)}></textarea >
         </div>
         <hr style={{width:'100%'}}></hr>
-        
-        <Button color="primary" style={{padding: '0px', float:'right'}}  onClick={submitMsg} type='submit'>메세지 남기기</Button >  
+              
+        <Button className="bnt2"  style={{ float:'right'}} variant="outlined" onClick={submitMsg} type='submit'>확인</Button >  
       </div>  
 
       <div style={{width:"90%", margin:"0 auto"}}>
     
-              <div >
+              <div  style={{marginTop: '80px'}}>
                 {resMsg && resMsg.map((i) => 
                   (
-                    <div style={{marginBottom: '15px'}}>
-                      <div className="writerComment">{i.writer}</div>
-                      <div className="writerContent">{i.msg}</div>
+                    <div className="msgDivBox" style={{marginBottom: '25px'}}>
+                      <div className="writerComment">{i.msg}</div>
+                      <div className="writerContent">{i.writer}</div>
                     </div>
                 ))}
               </div>

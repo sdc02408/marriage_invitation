@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 const options = {
   //지도를 생성할 때 필요한 기본 옵션
   center: new window.kakao.maps.LatLng(37.5048601, 127.0344868), //지도의 중심좌표.
-  level: 3, //지도의 레벨(확대, 축소 정도)
+  level: 5, //지도의 레벨(확대, 축소 정도)
 };
 let markerPosition = new window.kakao.maps.LatLng(
   37.5048601,

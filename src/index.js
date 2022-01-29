@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import './index.css'
 import { Controller, Scene } from "react-scrollmagic";
 import Sequence from "./Sequence";
-import Firstpic from './images/1pic.jpg'
 import CarouselPage from './CarouselPage'
 import VideoPage from './VideoPage'
 import MapsDiv from './Map';
@@ -19,6 +18,12 @@ import firebaseInit from './firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SideBarModal from './SideBarModal'
+import Pic1 from '../src/images/Z63_0081_work-websize.jpg'
+import Pic2 from '../src/images/Z63_0257_work-websize.jpg'
 import Pic4 from '../src/images/Z63_0471_work-1-websize.jpg'
 import Pic5 from '../src/images/Z63_0510_work-1-websize.jpg'
 import Pic6 from '../src/images/Z63_0562_work-1-websize.jpg'
@@ -34,7 +39,31 @@ import Pic15 from '../src/images/Z63_3262_work-1-websize.jpg'
 import Pic16 from '../src/images/Z63_3365_work-1-websize.jpg'
 
 const App = () => {
+
+  const textInput = useRef();
+  const copy = () => {
+    const el = textInput.current
+    el.select()
+    document.execCommand("copy")
+  }
+
+
   const itemData = [
+
+
+
+
+      {
+        img: Pic1,
+        title: 'Image',
+        author: 'author',
+        cols: 1,
+      },{
+        img: Pic2,
+        title: 'Image',
+        author: 'author',
+        cols: 1,
+      },
        {
          img: Pic4,
          title: 'Image',
@@ -108,6 +137,36 @@ const App = () => {
         cols: 1,
        },
      ];
+
+     const doCopy = text => {
+      // 흐름 1.
+      if (!document.queryCommandSupported("copy")) {
+        return alert("복사하기가 지원되지 않는 브라우저입니다.");
+      }
+  
+      // 흐름 2.
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.top = 0;
+      textarea.style.left = 0;
+      textarea.style.position = "fixed";
+  
+      // 흐름 3.
+      document.body.appendChild(textarea);
+      // focus() -> 사파리 브라우저 서포팅
+      textarea.focus();
+      // select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
+      textarea.select();
+      // 흐름 4.
+      document.execCommand("copy");
+      // 흐름 5.
+      document.body.removeChild(textarea);
+      alert("클립보드에 복사되었습니다.");
+    };
+
+    
+
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -154,22 +213,28 @@ const App = () => {
 
       setResMsg(data)
     });
-    
-  
   },[])
 
 
 
   const ref = useRef();
-  
+  const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+      setShowModal(true);
+    }
+    const closeModal = () => {
+      setShowModal(false);
+    }
   return (
     <div className="App">
-
+    <SideBarModal showModal={showModal}  closeModal={closeModal}></SideBarModal>
+    {/* closeModal={closeModal} */}
       {/* <div style={{width:"100%"}}>
         <VideoPage />
       </div> */}
 
-      <Controller>
+      {/* <Controller>
         <Scene duration="100%" triggerHook="onLeave" pin>
           {progress => (
             <div style={{ height: "100vh", position: "relative" }}>
@@ -177,9 +242,8 @@ const App = () => {
             </div>
           )}
         </Scene>
-      </Controller>
-      
-
+      </Controller> */}
+      <img src={Pic1} style={{width: '100%'}} />
 
       <div style={{backgroundColor:'rgba(254, 251, 245, 0.8)', padding:'30px'}}>
      
@@ -272,7 +336,7 @@ const App = () => {
           <ImageList rowHeight={160} className={classes.imageList} cols={3}>
             {itemData.map((item) => (
               <ImageListItem key={item.img} cols={item.cols || 1}>
-                <img src={item.img} alt={item.title} />
+                <img src={item.img} alt={item.title} onClick={openModal} />
               </ImageListItem>
             ))}
           </ImageList>
@@ -288,7 +352,10 @@ const App = () => {
               <div className="sendMindName">신랑 측 </div>
               <div className="sendMindNum">신한은행 (예금주 : 양재명)</div>
               <span className="sendMindNum">110-401-086718</span>
-              <Button variant="outlined">복사하기</Button>
+              {/* <input  value="110-401-086718" ref={textInput} readOnly className="sendMindNumBtn"></input> */}
+              
+              {/* <Button onClick={copy} variant="outlined" >복사하기</Button> */}
+              <Button onClick={() => doCopy("110-401-086718")} variant="outlined" >복사하기</Button>
                
               {/* <Button variant="outlined">복사하기</Button> */}
             </div>
@@ -299,8 +366,9 @@ const App = () => {
             <div className="sendMindName">신부 측</div>
             <div className="sendMindNum">하나은행 (예금주 : 이종진) </div>
             <span className="sendMindNum">413-890062-86907</span>
-            <Button variant="outlined">복사하기</Button>
-
+            {/* <Button variant="outlined">복사하기</Button> */}
+            <Button onClick={() => doCopy("413-890062-86907")} variant="outlined" >복사하기</Button>
+            
             </div>
             <br></br>
 

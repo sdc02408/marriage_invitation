@@ -22,6 +22,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SideBarModal from './SideBarModal'
+import PicMain from '../src/images/Z63_056222.jpg'
 import Pic1 from '../src/images/Z63_0081_work-websize.jpg'
 import Pic2 from '../src/images/Z63_0257_work-websize.jpg'
 import Pic4 from '../src/images/Z63_0471_work-1-websize.jpg'
@@ -40,99 +41,87 @@ import Pic16 from '../src/images/Z63_3365_work-1-websize.jpg'
 
 const App = () => {
 
-  const textInput = useRef();
-  const copy = () => {
-    const el = textInput.current
-    el.select()
-    document.execCommand("copy")
-  }
-
-
   const itemData = [
-
-
-
-
       {
         img: Pic1,
-        title: 'Image',
+        title: '0',
         author: 'author',
         cols: 1,
       },{
         img: Pic2,
-        title: 'Image',
+        title: '1',
         author: 'author',
         cols: 1,
       },
        {
          img: Pic4,
-         title: 'Image',
+         title: '2',
          author: 'author',
          cols: 1,
        },
        {
         img: Pic5,
-        title: 'Image',
+        title: '3',
         author: 'author',
         cols: 1,
        },       {
         img: Pic6,
-        title: 'Image',
+        title: '4',
         author: 'author',
         cols: 1,
        },       {
         img: Pic7,
-        title: 'Image',
+        title: '5',
         author: 'author',
         cols: 1,
       },
       {
        img: Pic8,
-       title: 'Image',
+       title: '6',
        author: 'author',
        cols: 1,
       },       {
        img: Pic9,
-       title: 'Image',
+       title: '7',
        author: 'author',
        cols: 1,
       },     {
         img: Pic10,
-        title: 'Image',
+        title: '8',
         author: 'author',
         cols: 1,
        },       {
         img: Pic11,
-        title: 'Image',
+        title: '9',
         author: 'author',
         cols: 1,
        },       {
         img: Pic12,
-        title: 'Image',
+        title: '10',
         author: 'author',
         cols: 1,
       },
       {
        img: Pic13,
-       title: 'Image',
+       title: '11',
        author: 'author',
        cols: 1,
       },       
       {
        img: Pic14,
-       title: 'Image',
+       title: '12',
        author: 'author',
        cols: 1,
       },
       {
         img: Pic15,
-        title: 'Image',
+        title: '13',
         author: 'author',
         cols: 1,
        },
        {
         img: Pic16,
-        title: 'Image',
+        title: '1',
         author: 'author',
         cols: 1,
        },
@@ -219,8 +208,11 @@ const App = () => {
 
   const ref = useRef();
   const [showModal, setShowModal] = useState(false);
-
-    const openModal = () => {
+  const [clickImg, setClickImg] = useState('')
+  const [setImg,setSetImg] = useState('')
+    const openModal = (e) => {
+      setSetImg(e.target.title)
+      setClickImg(e.target.currentSrc)
       setShowModal(true);
     }
     const closeModal = () => {
@@ -228,7 +220,7 @@ const App = () => {
     }
   return (
     <div className="App">
-    <SideBarModal showModal={showModal}  closeModal={closeModal}></SideBarModal>
+    <SideBarModal showModal={showModal} imagesSet1={setImg} images={itemData} clickImgs={clickImg}  closeModal={closeModal}></SideBarModal>
     {/* closeModal={closeModal} */}
       {/* <div style={{width:"100%"}}>
         <VideoPage />
@@ -239,13 +231,14 @@ const App = () => {
           {progress => (
             <div style={{ height: "100vh", position: "relative" }}>
               <Sequence ref={ref} progress={progress} />
-            </div>
+            </div> 
           )}
         </Scene>
       </Controller> */}
-      <img src={Pic1} style={{width: '100%'}} />
+      <img src={Pic6} className="maingImage" />
 
-      <div style={{backgroundColor:'rgba(254, 251, 245, 0.8)', padding:'30px'}}>
+      {/* <div style={{backgroundColor:'rgba(254, 251, 245, 0.8)', padding:'30px'}}> */}
+      <div style={{ padding:'30px'}}>
      
      
       <div className="marrigeText"> 초대합니다 </div>      
@@ -336,7 +329,7 @@ const App = () => {
           <ImageList rowHeight={160} className={classes.imageList} cols={3}>
             {itemData.map((item) => (
               <ImageListItem key={item.img} cols={item.cols || 1}>
-                <img src={item.img} alt={item.title} onClick={openModal} />
+                <img src={item.img} alt={item.title} onClick={openModal} title={item.title}/>
               </ImageListItem>
             ))}
           </ImageList>

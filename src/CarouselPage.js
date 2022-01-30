@@ -20,8 +20,15 @@ import Pic16 from '../src/images/Z63_3365_work-1-websize.jpg'
 
 
 function CarouselPage() {
- 
   const settings = {
+    // customPaging: function (i) {
+    //   return (
+    //     <a>
+    //       <img
+    //       src={props[i].src} />
+    //     </a>
+    //   )
+    // },
     dots: false,
     infinite: true,
     speed: 500,
